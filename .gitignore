@@ -144,6 +144,6 @@ dmypy.json
 
 # custom
 notebooks/*
-files/*
+files/word_frequency.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
