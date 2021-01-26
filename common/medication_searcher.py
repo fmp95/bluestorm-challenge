@@ -1,6 +1,7 @@
 from pandas import read_csv
 
 from .word_checker import WordChecker
+from settings import DATABASE_FILE_PATH
 
 
 class MedicationSearcher:
@@ -9,7 +10,7 @@ class MedicationSearcher:
         self.checker = WordChecker()
 
         self.medications = read_csv(
-            "files/products.txt",
+            DATABASE_FILE_PATH,
             delimiter="~",
             usecols=["Ingredient", "DF;Route", "Trade_Name", "Applicant", "Strength"],
         )

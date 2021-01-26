@@ -4,30 +4,30 @@ from os.path import isfile, join
 from pandas import read_csv
 from spellchecker import SpellChecker
 
-FILE_PATH = join("files", "word_frequency.json")
+from settings import DATABASE_FILE_PATH, WORD_FREQUENCY_FILE_PATH
 
 
 class WordChecker:
     def __init__(self):
         self.spell = SpellChecker(language=None, distance=2)
 
-        if isfile(FILE_PATH):
-            self.spell.word_frequency.load_dictionary(FILE_PATH)
+        if isfile(WORD_FREQUENCY_FILE_PATH):
+            self.spell.word_frequency.load_dictionary(WORD_FREQUENCY_FILE_PATH)
         else:
             self.create_word_frequency_file()
-            self.spell.word_frequency.load_dictionary(FILE_PATH)
+            self.spell.word_frequency.load_dictionary(WORD_FREQUENCY_FILE_PATH)
 
     def create_word_frequency_file(self):
 
         file = read_csv(
-            "files/products.txt",
+            DATABASE_FILE_PATH,
             delimiter="~",
             usecols=["Trade_Name"],
         )
 
         words = self.get_frequency(file).to_dict()
 
-        with open(FILE_PATH, "w") as output_file:
+        with open(WORD_FREQUENCY_FILE_PATH, "w") as output_file:
             dump(words, output_file)
 
     def get_frequency(self, dataframe):
