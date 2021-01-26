@@ -1,2 +1,4 @@
 -r base.txt
 black==20.8b1
+notebook==6.2.0
+nb-black==1.0.7
