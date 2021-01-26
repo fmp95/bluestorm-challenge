@@ -20,6 +20,25 @@ class Medication(BaseModel):
     strengths: List[Strength]
     warning_messages: Optional[List[WarningMessage]]
 
+    class Config:
+
+        schema_extra = {
+            "example": {
+                "ingredients": [
+                    {"name": "ACETAMINOPHEN"},
+                    {"name": "CODEINE PHOSPHATE"},
+                ],
+                "dfs": [{"method": "TABLET"}],
+                "routes": [{"method": "ORAL"}],
+                "trade_names": [{"name": "TYLENOL W/ CODEINE"}],
+                "applicants": [{"name": "ORTHO MCNEIL PHARM"}],
+                "strengths": [{"amount": "325MG"}, {"amount": "7.5MG"}],
+                "warning_messages": [
+                    {"message": "Federal Register determi…ety or efficacy reasons"}
+                ],
+            }
+        }
+
 
 class Medications(BaseModel):
     medications: List[Medication]
