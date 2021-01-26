@@ -4,7 +4,7 @@ RUN mkdir code
 
 WORKDIR /code
 
-copy . /code
+COPY . .
 
 RUN pip install -r requirements/production.txt
 
