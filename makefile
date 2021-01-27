@@ -8,6 +8,8 @@ PRODUCTION_REQUIREMENTS = pip install -r requirements/production.txt
 
 RUN_SERVER = uvicorn main:app --reload
 
+DOCKER_TAG = bluestorm_challenge
+
 install_development:
 	$(CREATE_VENV) &&\
 	$(START_VENV) &&\
@@ -24,3 +26,9 @@ run: venv main.py
 	$(START_VENV) &&\
 	$(RUN_SERVER) &&\
 	$(STOP_VENV)
+
+build-docker:
+	docker build -t $(DOCKER_TAG) -f docker/Dockerfile .
+
+run-docker:
+	docker run $(DOCKER_TAG)
