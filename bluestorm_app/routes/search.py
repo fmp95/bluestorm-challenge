@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from response_models import Medications
-from common import MedicationSearcher
+from ..response_models import Medications
+from ..common import MedicationSearcher
 
 router = APIRouter()
 

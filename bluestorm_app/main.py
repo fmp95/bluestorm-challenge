@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from routes import search_router
+from .routes import search_router
 
 app = FastAPI(
     title="Bluestorm Challenge",
