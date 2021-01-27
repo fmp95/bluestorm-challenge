@@ -6,7 +6,7 @@ STOP_VENV = deactivate
 DEVELOPMENT_REQUIREMENTS = pip install -r requirements/development.txt
 PRODUCTION_REQUIREMENTS = pip install -r requirements/production.txt
 
-RUN_SERVER = uvicorn main:app --reload
+RUN_SERVER = uvicorn bluestorm_app.main:app --reload
 
 DOCKER_TAG = bluestorm_challenge
 
@@ -22,7 +22,7 @@ install_production:
 	$(PRODUCTION_REQUIREMENTS) &&\
 	$(STOP_VENV)
 
-run: venv main.py
+run: venv bluestorm_app/main.py
 	$(START_VENV) &&\
 	$(RUN_SERVER) &&\
 	$(STOP_VENV)
@@ -31,4 +31,4 @@ build-docker:
 	docker build -t $(DOCKER_TAG) -f docker/Dockerfile .
 
 run-docker:
-	docker run $(DOCKER_TAG)
+	docker run -p 80:80 $(DOCKER_TAG)
