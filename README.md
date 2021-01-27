@@ -7,9 +7,9 @@
 Aplicativo proposto no teste da Bluestorm, para a pesquisa de informações de medicamentos utilizando o banco de dados oferecido. O aplicativo oferece um endpoint REST API para a buscar dessas informações. O aplicativo em sua maioria foi desenvolvido utilizando FastAPI (Python).
 
 ## Dependências
-Python (3.9.1)  
-Docker  
-Outras listadas nos arquivos dentro da pasta ```requirements```
+- Python (3.9.1)  
+- Docker  
+- Outras listadas nos arquivos dentro da pasta ```requirements```
 
 ## Funcionalidades
 - [x] Correção de erros ortográficos nos termos de pesquisa;
