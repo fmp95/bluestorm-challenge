@@ -1,4 +1,4 @@
-from os.path import isfile
+from os.path import isfile, isdir
 
 from pytest import fixture
 
@@ -15,6 +15,10 @@ def check_file_existence():
 
 def test_database_file():
     assert isfile(DATABASE_FILE_PATH)
+
+
+def test_database_file():
+    assert isdir("logs")
 
 
 def test_dictionary_creation(check_file_existence):
