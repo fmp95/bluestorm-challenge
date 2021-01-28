@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 
-from ..bluestorm_app.main import app
+from bluestorm_app.main import app
 
 client = TestClient(app)
 

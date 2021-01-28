@@ -5,6 +5,7 @@ from pandas import read_csv
 from spellchecker import SpellChecker
 
 from settings import DATABASE_FILE_PATH, WORD_FREQUENCY_FILE_PATH
+from ..logs import common_logs
 
 
 class WordChecker:
@@ -29,6 +30,7 @@ class WordChecker:
 
         with open(WORD_FREQUENCY_FILE_PATH, "w") as output_file:
             dump(words, output_file)
+            common_logs.info(f"Word Frequency File Created Successfully!")
 
     def get_frequency(self, dataframe):
 
@@ -41,7 +43,8 @@ class WordChecker:
         return frequency
 
     def get_correction(self, word):
-        return self.spell.correction(word.lower())
 
-    def get_candidates(self, word):
-        return self.spell.candidates(word.lower())
+        corrected = self.spell.correction(word.lower())
+
+        common_logs.info(f"(Word corrected) Before: {word} | After: {corrected}")
+        return corrected
