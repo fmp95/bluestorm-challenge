@@ -34,4 +34,6 @@ run-docker:
 	docker run -p 80:80 $(DOCKER_TAG)
 
 run-tests:
-	pytest
+	$(START_VENV) &&\
+	pytest &&\
+	$(STOP_VENV)
